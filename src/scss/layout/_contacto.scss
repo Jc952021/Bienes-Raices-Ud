@@ -1,0 +1,16 @@
+.contacto-imagen{
+  background-image: url("../img/encuentra.jpg");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  padding: 10rem 0 8rem 0;
+  h2{
+    color: $blanco;
+    font-weight: bold;
+    font-size: 4rem;
+  }
+  p{
+    color: $blanco;
+    padding: 4rem 0 2rem 0;
+  }
+}

@@ -1,0 +1,36 @@
+.footer{
+  background-color: $grisOscuro;
+  padding: 2rem 0;
+  .nav{
+    padding: 4rem 0 0 0;
+    a{
+      text-decoration: none;
+      color: $blanco;
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+  }
+  .copyrigth{
+    text-align: center;
+    color: $blanco;
+  }
+}
+@include tablet{
+  .footer{
+    .nav{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0;
+      a{
+        display: block;
+        font-size: 2rem;
+        margin-right: 0;
+      }
+    }
+
+  }
+}

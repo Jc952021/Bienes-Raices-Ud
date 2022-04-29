@@ -1,0 +1,108 @@
+abrir laragon -abrir root-ahi se almacenara todos tus proyectos- copiar una carpeta final del proyecto-abrir visual code desde esa carpeta del proyecto que esta dentro del root
+//en laragon iniciar todo -web -saldra localhost/aqui pones el nombre de la carpeta de tu proyecto
+descargar mysql workbench - abajo saldra un cuadro-click ahi-para que funcione debe estar abierto el laragon
+//abrir file new model-doble click en tu base de datos y poner un nombre-+ad diagram-añadir una tabla
+//doble click en la tabla ,nn = not null , pk primary key au = autoincremet
+añadir columnas id, titulo,precio,imagen sera varchar de 200 ya que seguro pondra un link,descripcion sera longtext,habitaciones sera un int 1 ya que sera menos de 10 habitaciones
+//wc y estacionamiento tambien seran 1 ,creado sera tipo date
+crear otra tabla vendedores de columnas id nombre,aplei,telef avrchar 45 45 10
+insertar algunos vendedores
+crear una nueva columna a la 1 tabla donde tendra un vendedorid y este estara asociado al id de la tabla vendedor 
+-seria darle un nombre al forein referenciado de la otra columna, la columna vwndedorid estara vinculado con el id de la tabla
+arriba entrar a databases forward-next generate insert-next
+salia error ya que el workbench era de mysql 8 y laragon usa otra-entrar a edit de workbecnh y cambiarlo
+//puedes borrar todo y entrar en el localhost,abajo aprecera schemas y tables
+descargar tableplus-para modelar se usa el workbech y para vsualizar el plus
+//crear una conexion localhost port por defecto es 3306 save-entrar a tu base de datos -acaba el curso
+
+como el header se repite ,tenemos que pasarlo a un arcivo php e incluirlo en los demas que lo usan
+isset verifica si esta definido,si lo esta da true si no false
+en index habia un h1 que no incluimos en el php de header- hacer un php ahi con echo para que aparezca el h1
+hacer lo mismo con el footer,pero en  footer habia un año,para que tome el año actual debemos incluirlo con php
+en la carpeta includes crear un archivo para funciones y otro arch app donde estar algunas constantes php
+para no hacer include en cada php haremos una funcion donde se encargara de hace el include
+Usaría require siempre que el código sea importante (Funciones reutilizables de PHP, configuraciones…), mientras que include lo usaría en casos en los que el código no es vital para la ejecución del script (cabeceras y pies HTML o similares
+cuando hice require en la carpeta donde estoy ./ y escojo su hermano me sale error,prefiere sin ese ./
+quitar el isest y en el php de funciones para que inicio existe le debemos enviar por parametro true si no por defecto sera false,al parecer cuando se ejecuta la funcion de includes tambien se envia el parametro
+
+//videos de crud para propiedades
+crear una carpeta admin donde tendra su index y otra carpeta propiedades donde tendra varios archivos php que hagan el crud
+crear la carpeta iclude-templates y crear ahi los arch. header y footer ya que seran reutilizados en otros php
+en cada archivo php de crud y archivo html ejecutar la funcion de funciones.php de para traer el header y el footer-al ser el header igual en todos excepto en el index.html,entonces hacer un php ternario en header-fijarse donde llama el css,las imgenes,js y el css ahi, ya que es otra carpeta- / significa la carpeta origen del proyecto
+en administrador osea index,crear un a boton que se rediriga a crear y ahi en crear otro que se diriga a administrador-tenia un problema ya que tenia que redirigirme desde la carpeta raiz principal usando el /
+en el arch. crear , crear un form con 3 fieldsets info general,info de prop,vendedor
+en la carp includes crear una carp config-archivo database y conectar ahi tu base de datos-el mysql como esta en laragon su usuario es root y su contraseña es nada
+ejecutarla en crear php
+el $_POST Y $_GET - post recibe en un arreglo asociativo(creo) los valores que has puesto en formulario-como prop recibe el name y como valor, lo que escribiste en el input con ese name, cuando usas get esa clave y valor aparecen en la url despues de un ?
+para que funcione lo que envias del formulario ,este debe ser method post
+el action del form sig. a donde estaras enviando lo que has escrito en el formulario, en este caso lo enviamos a crear.php
+ hay un metodo para ver que tipo de metodo esta disponible es $_SERVER["REQUEST_METHOD"]
+cuando inicias la pagina por defecto esta en  get pero si haces un submit ,pasa a post 
+si estas viendo con vardump el $_POST saldra un array vacio pero lo que queremos es que si  el $_SERVER["REQUEST_METHOD"] es igual a post,es decir hemos hecho clcik al submit ,este pasara a post y se vera en $_POST lo que enviamos al form en vez de que al comienzo este en un array vacio
+ya traido el post con sus valores,almacenar cada valor en una variable
+
+cada input ponerle su name,es mejor que tengan el msmonombre que el de la base de datos
+puedes ir a table plus,escoger el bd -en la tabla propiedades , sql,ahi insertar el codigo,volver y actualizar
+en crear ejecutar tu base de datos en una variable para que le puedes ahcer un query
+cuando vas a hacer un inser into en values debe estar cada valor dentro de un "" o '' a pesar de que le paso la var en string
+crear un arreglo error donde se llenara si un input esta vacio-dar a cada div creado una clase y crear en scss la clase
+si enviamos el formulario pero si nos falta algo por enviar osea nos saldra la alerta de error,y cuando queremos completar lo que nos falta, los demas campos que llenamos estan vacios
+para que aparezca en el input con nuestro valor previamente se crea ahi un php donde las variables seran globales hasta que se actualizen con el post-pero no se podia con el vendedorid que es un select
+para solucionarlo se trae cada option de la base de datos con php.su value sera tambien de la db -y para que este seleccionado esa option se hace un ternario con selected
+despues de enviar el formulario siendo exitoso, que se rediriga al admin, para eso se hace un header() -es de php creo,pero esto se debe ahcer antes de un html
+cuando envies el formulario tambien agregarle el creado con date()
+existen filtros de validacion y saneamiento - el de saneamiento -si queremos solo string-seriafilter_var( filternumber -si tenemos "ayuda1"-elimina el ayuda y saldria solo el 1 -al parecer el de string ha sido eliminado y ahora es FILTER_UNSAFE_RAW,
+y validacion si un string tiene filtervalidatestrinf saldra su valor ya que lo es ,si no, sale false
+al momento de que el usuario envia su valor y este envia un sql,debemos limpiar ese sql osea escapar de eso y que solo recibamos una legal
+al mandar un archivo este no se ve en el post,pero se puede ver en el $_FILES-para que se vea despues del post ,al form se pone un enctype="multipart/form-data"
+al tener la info de la img ,si no agregamos nada, en la posicion de imagen(que es el name del input),posicion name estara vacia,para verificar si hemos puesto una imagen ,agregar al array de errores un div que si ese imagen-name no existe entonces sera agregado
+verificar tambien que esa imagen no supere los 100kb- que en files se vera imagen[size] en bytes 1kb = 1000bt osea si enviamos una imagen que seria 90kb estariamos enviando 90000bt- php maximo acepta 2 mb,si enviabamos mas , en el files su size seria 0 y error saldria 1,
+entonces en la if de La imagen es obligatoria se agrega si imagen error existe, existira si agregamos un archivo mas de 2mb
+para darle mas espacio de almacenamiento al php ,crea un archivo php en la raiz y ejecuta ahi phpinfo() o ir desde la ruta,ahi te dira donde esta guardado tu configuracion,entrar en el directorio te windows y buscar ahi
+arrastrar ese archivo en visual code-ir a upload_max_filesize-el mio estaba en 2gb-en resumen mio no necesitaba ningun cambio
+cuando estamos enviando el formulario sin errores ,crear una carpeta y almacenar ahi el archivo subido
+habia un problema que cada vez que se subia una imagen se reescribia con el mismo nombre,para eso crear un nombre aleatorio con php para cada imagen subida
+ahora en la consulta añadir el nombre de la imagen a la db
+despues de enviar el formulario queremos que nos redireccione a la ruta admin,se le puede añadir un nombre con su valor despues del ?-con eso la ruta admin puede usar la variable con el $-GET
+crear una tabla en index main y darle css
+en esa tabla traer la base de datos de propiedades y darle un while para cada tr donde mostrara su valor-al final cerrar la conexion con el close
+ahora queremos actualizar un valor de la base de datos,en la tabla tenemos un boton actualizar y este nos debe redirigir a la pagina actualizar.php-copiar la pg crear y pegarlo en actualizar
+pero en actualizar en el head queremos que salga el id de la propiedad que hicimos click,para eso le agregamos a la url con un ? la id
+en actualizar traer el id con el get y si el usuario reescribe la id de la url con un string-debemos validar de que sea solo un entero,si es un string que me rediriga a la ruta admin
+ya teniendo el id,hacer una consulta a la db con esa id-como queremos que aparezca al comienzo sus valores, en las variables que estaban vacias lo llenaremos con el resultado de la consultaid
+debajo del input donde ponemos la imagen-llenarlo con la imagen de la propiedadid
+ahora hacer el update-la imagen en el if ya no es obligatoria,por ahora comentar cuando creamos una imagen-eliminar el action del form ya que enviaba el post en actualizar php con la url pero como al comienzo no permitimos string solo id con el get,entonces dara error,si no se pone nada igual enviara el psot en el mismo archivo
+haremos el updte seteando el mismo valor y el actualizado depende de su id-recordar que cuando hacemos la consulta se debe especificar si es string o un number-el precio era un string
+debajo del sql poner un echo y debajo un exit,al poner nuevo datos ,copiar del echo y actualizarlo manualmente en el tableplus-sql-me di cuenta que cuando creamos y poniamos el values se puede poner los enteros sin comillas y lo acepta
+despues de actualizar queremos enviar al header para que nos redireccione al admin pero con resultado con valor 2,ahi en admin lo recibimos con get y hacemos aparecer otra alerta actualizada
+descomentar cuando creamos el directorio para la imagen-añadir al update la imagen-al actualizar lo hacia bien pero almacenaba la imagen anterior
+crear una validacion-cuando pasamos a la pag actualizar, no hay ningun archivo en files,pero si lo añadimos lo estara, si lo esta entonces eliminamos la imagen anterior con unlink ,si no lo esta, entonces significa que no añadimos ninguna imagen,entonces el nombreimagen sera la misma imagen anterior
+ahora se eliminara una fila de la base de datos, en index el boton eliminar sera envuelto en un form method postmsin action ya que el post se enviaria a este mismo archivo,el a ahora sera un input type submit ya que al enviar, enviaria todos los input con su name al post del archivo
+pero como no tenemos un input con name,se crearia otro input pero de type hiden(oculto),donde este tendria el name y de valor tendria la propiedad id
+recordar que cuando vemos el post al comienzo no existe,entonces consultar con el server requestmethod.ahi hacer la consulta a la db para eliminar una propiedad,pero primero validar ese id para que sea un entero,despues de hacer la consulta que rediriga al mismo admin
+el problema era que al eliminar,no eliminaba la imagen del proyecto-para eso se hace una consulta a la db con select para ver la imagen  eliminarlo con el unlink,terminado todo que rediriga al admin donde enviaremos el resultado 3 donde saldra una alerta eliminada
+en index original del proyecto,en la parte de anuncios,este que muestre los anuncios de acuerdo a la db de propiedades,como los anuncios se repiten en el index php y el anuncios.php entonces crear un template para reutilizarlo y que esten ahi con el include
+en el template anuncios hacer la consulta a la db para traer todos los anuncios de acurso a cuantos hay en el db de propiedades
+como queremos mostrar en la principal solo 3 anuncios y en la pag de anuncios quermos mostrar todas entonces hay que ponerle un limite,en el template cuando hagamos la consulta le pondremos un limit y su valor dependera de que le ponemos en acda pagina, es decir si en la principal le ponemos 3 ,entonces mostrar 3 anuncios
+actualizar cada texto de cada anuncio de acuerdo a su propiedad-cerrar la conexion - tenia un problema que la descripcion al momento de mostrar seguia recto y no se podia bajar ni con width,tambien lo pase a string y nada,solucion se escribia en la desrip con separaciones
+al enlazar la propiedad id al anuncio al dar click, cuando me redirecciona a la pagina anuncio.php-ahi recibir ese id con el get y validarlo-hacer una consulta a la db con esa id y llenar el anuncio con info deacuerdo a esa id
+si el usuario escribe en esa ruta un id invalido que redireccione al admin - si vez con un vardump la consulta,te saldra un objeto con una prop num-row,si el id existia en la db su valor era 1 si no exisitia era 0
+como era un objeto,para acceder a su propiedad era con objeto->supropiedad, teniendo eso,si es 0 que redireccione al admin 
+
+//video autenticacion
+//crear en workbench un tabla usuarios-id ,email sera  varchar(50),password debe ser char(50),char es una longitud fija es decir si pones 4 palabras ,los 46 lo llena con espacios en blanco
+crear en el proyecto un archivo usuario php donde ejecutaras la db para insertar el valor de un pass y un email en la nueva tabla usuario-al ahcer el query e inciar el proyecto,defrente lo inserta en la db
+hashear el password con un valor de php llamada pasword_hash(),1 va el pasword y 2 el tipo de algoritmo  - esto devuelve siempre una longitud de 60 por eso en la db se puso char(60)
+crear una arch. login .php donde el usuario pondra su email y password dentro de un formulario
+formulario debe ser post ,traer la db,almacenar del post a una variable el email y pasword,validarlo,recordar hay que escapar_string-crear un arreglo errores vacio,si no coloca email o pasword que
+muestre esos errores,los errores hacerle un foreach para que lo itere dentro de una alerta
+si no hay ningun error entonces comprobar si ese usuario existe,entonces hacer una consulta de si existe ese email con where, y no con like
+si la consulta es invalida-esa consulta es un objeto donde se puede acceder a su prop num-rows - si sale 0 significa que no existe o la consulta que hizo el usuario no encontro nada
+despues de que encontro el email correcto,ahora verificar el password.se verifica con el paswordverifi(), 1 el pasword que puso el usuario,2 el del usuario accedido con el email-dara true o false
+php tiene una superglobal llamada $_session,esta solo se puede leer si  sesion_start() esta activa,entonces despues de haber logeado correctamente iniciamos sesion y podemos llenar el $-session con propiedades y sus valores
+llenarlo con el usuario que debe tener el email y un login con un boleano true, ahora queremos que en la pag. admin vea si esta logeado,iniciar sesion ahi con sesion strsrt y ver si sesion[login] existe, si no que redireccione a la paginaprincipal del proyect
+ahora se protegera la crear.php y actualizar.php-como se repite el codigo entonces crear una funcion que retorne true o false
+,despues de iniciar sesion que me rediriga al admin,al template header queremos añadirle en su nav cerrar sesion,para eso ver si esta logeado con sesion star- pero como otras pag ya tenian ese sesion star disponible,entonces verificar en header si sesion existe,si no existe entonces se inicia sesion-
+-en las paginas donde esta inciado el sesionstar-eeso debe estar antes de donde incluyes el header-.  
+si el usuario inicio sesion, se crea en el nav cerrar sesion si no, entonces que no aparezca nada -al dar click en cerrar sesion este que elimine la sesion en una pag y  que redireccione a la pag principal del proyecto  
+

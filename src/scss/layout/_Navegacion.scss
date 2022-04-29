@@ -1,0 +1,67 @@
+.barra{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .nav{
+    
+    a{
+      text-decoration: none;
+      color: $blanco;
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+    transition: opacity 0.8s ease-in;
+
+  }
+  
+}
+.barra__burguer{
+width: 4rem;
+display: none;
+}
+.nav__derecha{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.dark-mode{
+  width: 3rem;
+ 
+  filter: invert(1);
+}
+
+@include tablet{
+  .barra{
+    flex-direction: column;
+  
+  .barra__burguer{
+    display: block;
+  }
+  .nav__derecha{
+    align-items: center;
+    .dark-mode{
+      margin-top: 2rem;
+    }
+  }
+  .nav{
+    margin-top: 1rem;
+    visibility: hidden;
+  opacity: 0;
+  height: 0;
+  &.ocultar{
+    height: auto;
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0.5s ease-in-out,opacity 0.5s ease-in;
+    }
+    a{
+    display: block;
+    text-align: center;
+    margin-right: 0;
+    }
+  }
+}
+}

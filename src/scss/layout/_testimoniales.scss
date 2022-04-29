@@ -1,0 +1,75 @@
+.testimoniales{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 2rem;
+  padding-bottom: 2rem;
+}
+.blog{
+  padding-bottom: 2rem;
+}
+.entrada-blog{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 2rem;
+  margin-bottom: 2rem;
+  &:last-of-type{
+    margin-bottom: 0;
+  }
+}
+.texto-meta{
+  span{
+    color: $amarillo;
+  }
+
+}
+.entrada-texto{
+  a{
+    text-decoration: none;
+  }
+  h4{
+    color: $negro;
+    &::after{
+      content: "";
+      display: block;
+      width: 10rem;
+      height: 0.5rem;
+      background-color: $verde;
+    }
+    margin: 0;
+  }
+}
+
+.testimonio-contenedor{
+background-color: $verde;
+padding: 2rem;
+border-radius: 2rem;
+color: $blanco;
+font-size: 2.4rem;
+blockquote{
+position: relative;
+ 
+padding-left: 5rem;
+  
+&::before{
+  content: "";
+  display: block;
+  height: 5rem;
+  width: 6rem;
+  background-image: url("../img/comilla.svg");
+  position: absolute;
+  left: -2rem;
+}
+}
+p{
+  color: $blanco;
+  text-align: right;
+}
+}
+@include tablet{
+  .testimoniales{
+    grid-template-columns: 1fr;
+  }
+  .entrada-blog{
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,23 @@
+.header {
+  background-color: $grisOscuro;
+  padding: 3rem 0;
+
+  &.inicio {
+    background-image: url("../img/header.jpg");
+    min-height: 70rem;
+    background-size: cover;
+    background-position: center;
+    .contenido__header {
+      min-height: 70rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h1 {
+        color: $blanco;
+        text-align: left;
+        font-weight: bold;
+        max-width: 60rem;
+      }
+    }
+  }
+}

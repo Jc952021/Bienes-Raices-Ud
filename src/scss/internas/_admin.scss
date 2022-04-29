@@ -1,0 +1,41 @@
+.error{
+  background-color: darken($color: red, $amount: 5);
+  padding: 1rem 0;
+  color: $blanco;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+}
+.exito{
+  background-color: $verde;
+  padding: 1rem 0;
+  color: $blanco;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+table.propiedades{
+  width: 100%;
+  text-align: center;
+  border-spacing: 0;
+  thead{
+    color: $blanco;
+    background-color: $verde;
+    th{
+      padding: 2rem 0;
+    }
+  }
+  tbody{
+    .imagen-tabla{
+      width: 10rem;
+      display: inline-block;
+    }
+
+  }
+}
+.imagen-corta{
+width: 20rem;
+}
+.w-100{
+  width: 100%;
+}

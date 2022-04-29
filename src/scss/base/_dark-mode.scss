@@ -1,0 +1,19 @@
+body{
+  &.oscuro{
+background-color:darken($grisOscuro,10);
+p,h1,h2,h3,h4,fieldset,label{
+  color: $blanco;
+}
+.anuncio{
+  background-color: $grisOscuro;
+  .anuncio__icono{
+    img{
+      filter: invert(1);
+    }
+  }
+}
+.precio{
+  color: $verde;
+}
+  }
+}
